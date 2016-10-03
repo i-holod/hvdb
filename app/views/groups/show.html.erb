@@ -1,5 +1,11 @@
 <div class="page-header">
-  <h4><%= link_to @group.name, group_path(@group) %> | Категория: <b><%= @group.cat %></b></h4>
+  <h4>
+    <%= link_to @group.name, group_path(@group) %> | 
+    Категория: <b><%= @group.cat %></b> |
+    <small>Группа создана <%= @group.created_at.in_time_zone('Moscow').strftime("%d.%m.%Y") %> в <%= @group.created_at.in_time_zone('Moscow').strftime("%H:%M:%S") %>
+    </small>
+
+  </h4>
   <small>
     <%= link_to 'редактировать', edit_group_path(@group), :class => 'label label-primary' %> 
     <%= link_to 'удалить', group_path(@group), method: :delete, data: {confirm: 'Удалить группу?'}, :class => 'label label-danger' %>
