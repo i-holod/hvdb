@@ -6,6 +6,7 @@ one:
   lname: MyString
   phone: MyString
   address: MyString
+  group: one
 
 two:
   fname: MyString
@@ -13,3 +14,4 @@ two:
   lname: MyString
   phone: MyString
   address: MyString
+  group: two
