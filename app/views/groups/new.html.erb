@@ -1,0 +1,30 @@
+<h3>Создать группу</h3>
+
+<% if @group && @group.errors.any? %>
+
+  <p>
+    <ul>
+      <% @group.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end  %>
+    </ul>
+  </p>
+
+<% end %>
+
+<%= form_for :group, url: groups_path do |f| %>
+  <p>
+    <%= f.label :Название %><br>
+    <%= f.text_field :name, :class => 'form-control' %>
+  </p>
+
+  <p>
+    <%= f.label :Категория %><br>
+    <%= f.text_field :cat, :class => 'form-control' %>
+  </p>
+
+  <p>
+    <%= f.submit 'Создать', :class => 'btn btn-primary' %>
+  </p>
+
+<% end %>

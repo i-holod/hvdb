@@ -1,0 +1,13 @@
+<%= link_to 'Cоздать группу', new_group_path, :class => 'btn btn-primary' %><br>
+
+<% @show_all.each do |x| %>
+
+  <div class="page-header">
+    <h4><%= link_to x.name, group_path(x) %> | Категория: <b><%= x.cat %></b></h4>
+    <small>
+      <%= link_to 'редактировать', edit_group_path(x), :class => 'label label-primary' %> 
+      <%= link_to 'удалить', group_path(x), method: :delete, data: {confirm: 'Удалить группу?'}, :class => 'label label-danger' %>
+    </small><br><br>
+  </div>
+
+<% end %>

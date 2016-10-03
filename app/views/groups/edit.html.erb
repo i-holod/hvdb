@@ -1,0 +1,30 @@
+<h3>Редактировать группу #<%= @group.id %></h3>
+
+<% if @group && @group.errors.any? %>
+
+  <p>
+    <ul>
+      <% @group.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end  %>
+    </ul>
+  </p>
+
+<% end %>
+
+<%= form_for :group, url: group_path, method: :patch do |f| %>
+  <p>
+    <%= f.label :Название %><br>
+    <%= f.text_field :name, :class => 'form-control' %>
+  </p>
+
+  <p>
+    <%= f.label :Категория %><br>
+    <%= f.text_field :cat, :class => 'form-control' %>
+  </p>
+
+  <p>
+    <%= f.submit 'Сохранить', :class => 'btn btn-primary' %>
+  </p>
+
+<% end %>
