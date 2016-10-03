@@ -1,11 +1,21 @@
-<h4><%= @group.name %></h4>
-Категория: <%= @group.cat %>
-<br><br>
-Список учеников:<br><br>
+<div class="page-header">
+  <h4><%= link_to @group.name, group_path(@group) %> | Категория: <b><%= @group.cat %></b></h4>
+  <small>
+    <%= link_to 'редактировать', edit_group_path(@group), :class => 'label label-primary' %> 
+    <%= link_to 'удалить', group_path(@group), method: :delete, data: {confirm: 'Удалить группу?'}, :class => 'label label-danger' %>
+  </small><br><br>
+</div>
+
+<h4>Список учеников:</h4><br>
+
+<% if @group.students.exists? %>
+<% else %>
+  Группа пуста, добавьте учеников при помощи формы внизу.
+<% end %>
 
 <% @group.students.each do |student| %>
 
-  <b>Полное имя</b>: <%= student.fname %> <%= student.lname %> <%= student.sname %>
+  <b>Имя</b>: <%= student.fname %> <%= student.lname %> <%= student.sname %>
 
   <br>
 
@@ -18,9 +28,8 @@
   <br><br>
 
 <% end %>
-<br><br>
 <hr>
-<h4>Добавить ученика:</h4>
+<h4>Добавить ученика:</h4><br>
 <%= form_for([@group, @group.students.build]) do |f| %>
   <p>
     <%= f.label :Фамилия %><br>
